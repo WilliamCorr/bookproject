@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+   <meta charset="UTF-8">
+    <title>MGW - {{ pageTitle }}  page</title>
+
+    <style>
+         @import '/css/style.css'; {# baisc css with twig logged in compliment css #}
+        {#  @import '/css/style2.css'; #}
+    </style>
+
+        {% block javascripts %}
+        {% endblock %}
+
+</head>
+<body>
+
+<header>
+
+    <div class="Login Panel">
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit">Login</button>
+        <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+
+    {% if loggedIn %}
+        You are logged in as: <span class="username">{{ username }}</span>
+        <a href="/index.php?action=logout">logout</a>
+    {% else %}
+         <a class="{% block loginStyle %}{% endblock %}" href ="/index.php?action=login">login</a>
+    {% endif %}
+</header>
+
+<nav>
+    <ul>
+
+         <li>
+            <a class="{% block homeStyle %}{% endblock %}" href="/index.php">home</a>
+         </li>
+         <li>
+            <a class="{% block userListStyle %}{% endblock %}" href="/index.php?action=userList">list all users</a>
+         </li>
+
+        {#homeYears#}
+        <li>
+            <a class="{% block blogStyle %}{% endblock %}" href="/index.php?action=johndeehomeYears">Blog Home</a>
+        </li>
+        {#introductionYears#}
+        <li>
+            <a class="{% block introductionStyle %}{% endblock %}" href="/index.php?action=educationYears">Introduction</a>
+        </li>
+        {#earlyYears#}
+        <li>
+            <a class="{% block earlyStyle %}{% endblock %}" href="/index.php?action=earlyYears">early years</a>
+        </li>
+        {#middleYears#}
+        <li>
+            <a class="{% block middleStyle %}{% endblock %}" href="/index.php?action=middleYears">midldle years</a>
+        </li>
+        {#laterYears#}
+        <li>
+            <a class="{% block laterStyle %}{% endblock %}" href="/index.php?action=laterYears">later years</a>
+        </li>
+        {#linkYears#}
+        <li>
+            <a class="{% block linkStyle %}{% endblock %}" href="/index.php?action=linkYears">links</a>
+        </li>
+        {#aboutYears#}
+        <li>
+            <a class="{% block aboutStyle %}{% endblock %}" href="/index.php?action=aboutYears">about</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<hr>
+
+{% block main %}
+{% endblock %}
+
+
+
+</body>
+</html>
